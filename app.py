@@ -167,7 +167,7 @@ def interaktif_grafik(df, sehir_adi, renk_max, renk_min, renk_yagis, grafik_tema
 def ruzgar_grafigi(df, renk_ruzgar, plotly_tema, font_color, bg_color):
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df['date'], y=df['ruzgar'], name="Rüzgar Hızı", fill='tozeroy', line=dict(color=renk_ruzgar)))
-    fig.update_layout(title="Rüzgar Analizi (km/s)", template=plotly_tema, height=350, paper_bgcolor=bg_color, plot_bgcolor=bg_color, font=dict(color=font_color))
+    fig.update_layout(title="Rüzgar Analizi (km/h)", template=plotly_tema, height=350, paper_bgcolor=bg_color, plot_bgcolor=bg_color, font=dict(color=font_color))
     return fig
 
 def tahmin_grafigi(df, sehir_adi, tema, font, bg):
@@ -244,7 +244,7 @@ if baslat:
                     <div style="text-align: right;">
                         <div style="font-size: 3.5rem; font-weight: bold;">{sicaklik:.1f}°C</div>
                         <div style="font-size: 1rem;">Hissedilen: <b>{his:.1f}°C</b></div>
-                        <div style="font-size: 1rem;">Nem: <b>%{nem:.0f}</b> | Rüzgar: <b>{ruzgar:.1f} km/s</b></div>
+                        <div style="font-size: 1rem;">Nem: <b>%{nem:.0f}</b> | Rüzgar: <b>{ruzgar:.1f} km/h</b></div>
                     </div>
                 </div>
             </div>
@@ -297,7 +297,7 @@ if st.session_state.analiz_yapildi:
             c4.metric("Top. Yağış", f"{top_yagis:.1f} mm")
         with tab2:
             st.plotly_chart(ruzgar_grafigi(df, renk_ruzgar, plotly_tema, font_color, bg_color), use_container_width=True)
-            st.info(f"Maksimum rüzgar hamlesi: **{max_ruzgar} km/s**")
+            st.info(f"Maksimum rüzgar hamlesi: **{max_ruzgar} km/h**")
         with tab3:
             gun_sayisi = (bitis - baslangic).days
             # TEKNİK MÜHENDİS RAPORU
@@ -313,7 +313,7 @@ if st.session_state.analiz_yapildi:
             - Minimum Sıcaklık: {minn:.1f}°C
             - Ortalama Sıcaklık: {ort:.1f}°C
             - Toplam Yağış: {top_yagis:.1f} mm
-            - Maksimum Rüzgar: {max_ruzgar} km/s
+            - Maksimum Rüzgar: {max_ruzgar} km/h
             
             GÖREV:
             Bu verileri kullanarak teknik bir "Mühendislik Raporu" yaz.
