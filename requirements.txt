@@ -1,0 +1,8 @@
+streamlit
+google-generativeai
+openmeteo-requests
+requests-cache
+pandas
+retry-requests
+plotly
+geopy
