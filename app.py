@@ -13,10 +13,10 @@ import time
 # ================= AYARLAR =================
 # ================= AYARLAR =================
 try:
-    # Şifreyi kodun içine yazmıyoruz, Streamlit'in gizli kasasından çekiyoruz
+    
     GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 except:
-    # Bu kısım sadece hata vermesin diye, boş bırakabilirsin veya hata mesajı verdirebilirsin
+    
     st.error("⚠️ API Anahtarı bulunamadı! Lütfen Streamlit Cloud 'Secrets' ayarlarını yapın.")
     st.stop()
 
@@ -446,4 +446,5 @@ if st.session_state.analiz_yapildi:
             if sonuc:
                 st.markdown(sonuc)
             else:
+
                 st.error("Rapor oluşturulamadı. Lütfen tekrar deneyin.")
