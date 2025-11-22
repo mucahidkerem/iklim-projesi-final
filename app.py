@@ -239,10 +239,22 @@ with st.sidebar:
     if secilen_mod == "Karanlık":
         st.markdown("""
         <style>
+        /* Ana arka plan */
         .stApp { background-color: #0E1117; color: white; }
+        
+        /* Sol Menü */
         section[data-testid="stSidebar"] { background-color: #262730; }
         section[data-testid="stSidebar"] * { color: white !important; }
         section[data-testid="stSidebar"] input { color: black !important; }
+        
+        /* Sekme Başlıkları (Tabs) */
+        button[data-baseweb="tab"] { color: white !important; }
+        
+        /* Metrik Etiketleri (Ortalama, En Yüksek vb.) */
+        [data-testid="stMetricLabel"] { color: #b0b0b0 !important; }
+        [data-testid="stMetricValue"] { color: white !important; }
+        
+        /* Üst Başlık */
         header[data-testid="stHeader"] { background-color: #0E1117; }
         </style>
         """, unsafe_allow_html=True)
@@ -448,3 +460,4 @@ if st.session_state.analiz_yapildi:
             else:
 
                 st.error("Rapor oluşturulamadı. Lütfen tekrar deneyin.")
+
