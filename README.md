@@ -1,10 +1,10 @@
-# 🌍 Pro İklim Analiz Sistemi
+# Pro İklim Analiz Sistemi
 
 Bu proje, Python ve Yapay Zeka teknolojileri kullanılarak geliştirilmiş, uçtan uca bir meteorolojik analiz ve tahmin sistemidir.
 
-🔗 **Canlı Demo:** [Uygulamayı Görüntüle](https://mucahidkeremhava.streamlit.app/)
+ **Canlı Demo:** [Uygulamayı Görüntüle](https://mucahidkeremhava.streamlit.app/)
 
-## 🚀 Özellikler
+##  Özellikler
 
 * **Global Konumlandırma:** `Geopy` kütüphanesi ile dünyanın her yerindeki lokasyonların (Şehir, İlçe, Köy) koordinatlarını ve yerel saat dilimlerini otomatik algılar.
 * **Canlı Veri Akışı:** `Open-Meteo API` entegrasyonu ile anlık hava durumu ve 7 günlük tahmin verilerini çeker.
@@ -12,7 +12,7 @@ Bu proje, Python ve Yapay Zeka teknolojileri kullanılarak geliştirilmiş, uçt
 * **İnteraktif Görselleştirme:** `Plotly` ile dinamik, yakınlaştırılabilir sıcaklık, yağış ve rüzgar grafikleri sunar.
 * **Veri İhracı:** Analiz edilen verilerin CSV (Excel) formatında indirilmesine olanak tanır.
 
-## 🛠️ Kullanılan Teknolojiler
+##  Kullanılan Teknolojiler
 
 * **Dil:** Python 3.10+
 * **Arayüz:** Streamlit
@@ -20,7 +20,7 @@ Bu proje, Python ve Yapay Zeka teknolojileri kullanılarak geliştirilmiş, uçt
 * **Görselleştirme:** Plotly Graph Objects
 * **API & AI:** Open-Meteo, Google Generative AI
 
-## 📦 Kurulum ve Çalıştırma (Local)
+##  Kurulum ve Çalıştırma (Local)
 
 1.  Projeyi klonlayın:
     ```bash
