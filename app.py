@@ -30,15 +30,19 @@ st.set_page_config(page_title="İklim Analiz Sistemi", layout="wide", page_icon=
 
 @st.cache_data
 def koordinat_bul(sehir_adi):
-    geolocator = Nominatim(user_agent="muhendislik_istasyonu_v27_final_fix")
+    # İsim değişikliği yaptık ve 10 saniye bekleme süresi (timeout) ekledik
+    geolocator = Nominatim(user_agent="kerem_meteoroloji_istasyonu_final_v99", timeout=10)
     try:
+        # Hata almamak için küçük bir bekleme
         time.sleep(1)
         location = geolocator.geocode(sehir_adi)
         if location:
             return location.latitude, location.longitude, location.address
         else:
             return None, None, None
-    except:
+    except Exception as e:
+        # Hata olursa terminale yazsın (bize ipucu verir)
+        print(f"Hata: {e}")
         return None, None, None
 
 def anlik_durum_cek(lat, lon):
@@ -460,4 +464,5 @@ if st.session_state.analiz_yapildi:
             else:
 
                 st.error("Rapor oluşturulamadı. Lütfen tekrar deneyin.")
+
 
