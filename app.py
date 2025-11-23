@@ -10,6 +10,22 @@ from geopy.geocoders import Nominatim
 import datetime
 import time
 
+import streamlit as st
+# ... diğer importlar ...
+
+# ================= BAKIM MODU =================
+BAKIM_VAR_MI = True  # Siteyi tekrar açmak için burayı False yap
+
+if BAKIM_VAR_MI:
+    st.set_page_config(page_title="Bakımdayız", page_icon="⚠️", layout="centered")
+    st.title("⚠️ Teknik Bakım")
+    st.error("Sitemiz şu an teknik bir güncelleme nedeniyle geçici olarak hizmet dışıdır.")
+    st.info("Lütfen daha sonra tekrar ziyaret ediniz. Anlayışınız için teşekkürler.")
+    st.stop() # <--- BU KOMUT AŞAĞIDAKİ HİÇBİR KODU ÇALIŞTIRMAZ, BURADA DURUR.
+# ==============================================
+
+# ... (Senin eski kodların burada devam ediyor) ...
+
 # ================= AYARLAR =================
 # ================= AYARLAR =================
 try:
@@ -464,5 +480,6 @@ if st.session_state.analiz_yapildi:
             else:
 
                 st.error("Rapor oluşturulamadı. Lütfen tekrar deneyin.")
+
 
 
