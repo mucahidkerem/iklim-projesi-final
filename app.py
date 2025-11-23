@@ -18,7 +18,7 @@ BAKIM_VAR_MI = True  # Siteyi tekrar açmak için burayı False yap
 
 if BAKIM_VAR_MI:
     st.set_page_config(page_title="Bakımdayız", page_icon="⚠️", layout="centered")
-    st.title("⚠️ Teknik Bakım Bozdum Bazı Şeyleri eee Site Yapmak Kolay Değil Kolay Diyen...")
+    st.title("⚠️ Teknik Bakım Bozdum Bazı Şeyleri")
     st.error("Sitemiz şu an teknik bir güncelleme nedeniyle geçici olarak hizmet dışıdır.")
     st.info("Lütfen daha sonra tekrar ziyaret ediniz. Anlayışınız için teşekkürler.")
     st.stop() # <--- BU KOMUT AŞAĞIDAKİ HİÇBİR KODU ÇALIŞTIRMAZ, BURADA DURDURUYORUM.
@@ -480,6 +480,7 @@ if st.session_state.analiz_yapildi:
             else:
 
                 st.error("Rapor oluşturulamadı. Lütfen tekrar deneyin.")
+
 
 
 
