@@ -412,17 +412,25 @@ if st.session_state.analiz_yapildi:
             
         with tab3:
             gun_sayisi = (bitis - baslangic).days
+            # İMZA YASAĞI EKLENMİŞ YENİ PROMPT
             prompt = f"""
-            Sen uzman bir Meteoroloji Mühendisisin. Aşağıdaki verileri kullanarak resmi ve teknik bir analiz raporu yaz.
-            Bölge: {st.session_state.adres}
-            Dönem: {baslangic.strftime('%d.%m.%Y')} - {bitis.strftime('%d.%m.%Y')} ({gun_sayisi} Gün)
-            İstatistikler: Max {maks}°C, Min {minn}°C, Ort {ort}°C, Toplam Yağış {top_yagis}mm.
+            Sen uzman bir Meteoroloji Mühendisisin. Aşağıdaki verileri kullanarak teknik bir analiz raporu yaz.
+            
+            Veri Seti:
+            - Bölge: {st.session_state.adres}
+            - Dönem: {baslangic.strftime('%d.%m.%Y')} - {bitis.strftime('%d.%m.%Y')} ({gun_sayisi} Gün)
+            - İstatistikler: Max {maks}°C, Min {minn}°C, Ort {ort}°C, Toplam Yağış {top_yagis}mm.
+            
             Rapor Formatı:
             1. **Giriş:** Dönemin genel meteorolojik karakteristiği.
             2. **Sıcaklık Rejimi:** Mevsim normallerine göre sapmalar.
             3. **Yağış Analizi:** Kuraklık durumu veya yağışın dağılımı.
             4. **Sonuç:** Tarım ve su kaynakları üzerindeki olası etkiler.
-            Lütfen "Yapay zeka", "Model" gibi ifadeler KULLANMA. Doğrudan mühendis gibi yaz.
+            
+            ÇOK ÖNEMLİ YASAKLAR:
+            1. Asla "[Adınız]", "Hazırlayan:", "İmza" gibi şeyler YAZMA.
+            2. "Rapor sonu", "Teşekkürler" deme.
+            3. Sonuç maddesini yaz ve dur.
             """
             with st.spinner('Analiz hazırlanıyor...'):
                 st.markdown(teknik_analiz_olustur(prompt))
@@ -488,4 +496,5 @@ if st.session_state.analiz_yapildi:
             else:
 
                 st.error("Rapor oluşturulamadı. Lütfen tekrar deneyin.")
+
 
