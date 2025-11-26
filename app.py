@@ -14,7 +14,7 @@ import streamlit as st
 # ... diğer importlar ...
 
 # ================= BAKIM MODU =================
-BAKIM_VAR_MI = False  # Siteyi tekrar açmak için burayı False yap
+BAKIM_VAR_MI = True  # Siteyi tekrar açmak için burayı False yap
 
 if BAKIM_VAR_MI:
     st.set_page_config(page_title="Bakımdayız", page_icon="⚠️", layout="centered")
@@ -480,6 +480,7 @@ if st.session_state.analiz_yapildi:
             else:
 
                 st.error("Rapor oluşturulamadı. Lütfen tekrar deneyin.")
+
 
 
 
