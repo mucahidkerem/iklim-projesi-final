@@ -6,10 +6,9 @@ import pandas as pd
 from retry_requests import retry
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from geopy.geocoders import Nominatim
+import requests
 import datetime
 import time
-
 import streamlit as st
 # ... diğer importlar ...
 
@@ -24,10 +23,7 @@ if BAKIM_VAR_MI:
     st.stop() # <--- BU KOMUT AŞAĞIDAKİ HİÇBİR KODU ÇALIŞTIRMAZ, BURADA DURDURUYORUM.
 # ==============================================
 
-# ... (KOD Aşağıda devam ediyor) ...
 
-# ================= AYARLAR =================
-# ================= AYARLAR =================
 try:
     
     GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
@@ -46,19 +42,31 @@ st.set_page_config(page_title="İklim Analiz Sistemi", layout="wide", page_icon=
 
 @st.cache_data
 def koordinat_bul(sehir_adi):
-    # İsim değişikliği yaptık ve 10 saniye bekleme süresi (timeout) ekledik
-    geolocator = Nominatim(user_agent="kerem_meteoroloji_istasyonu_final_v99", timeout=10)
+    # geopy yerine Open-Meteo'nun kendi Geocoding API'si kullanılıyor
+    url = "https://geocoding-api.open-meteo.com/v1/search"
+    params = {"name": sehir_adi, "count": 1, "language": "tr"}
+    
     try:
-        # Hata almamak için küçük bir bekleme
-        time.sleep(1)
-        location = geolocator.geocode(sehir_adi)
-        if location:
-            return location.latitude, location.longitude, location.address
+        response = requests.get(url, params=params, timeout=10)
+        response.raise_for_status() # HTTP hatalarını kontrol et
+        data = response.json()
+        
+        if data and 'results' in data and data['results']:
+            result = data['results'][0]
+            lat = result.get('latitude')
+            lon = result.get('longitude')
+            
+            # Adres bilgilerini al
+            isim = result.get('name', sehir_adi)
+            ulke = result.get('country', '')
+            tam_adres = f"{isim}, {ulke}"
+
+            return lat, lon, tam_adres
         else:
             return None, None, None
     except Exception as e:
-        # Hata olursa terminale yazsın (bize ipucu verir)
-        print(f"Hata: {e}")
+        # Hata olursa buraya düşer (Örneğin internet yoksa falan)
+        print(f"Geocoding API Hatası: {e}")
         return None, None, None
 
 def anlik_durum_cek(lat, lon):
@@ -480,10 +488,3 @@ if st.session_state.analiz_yapildi:
             else:
 
                 st.error("Rapor oluşturulamadı. Lütfen tekrar deneyin.")
-
-
-
-
-
-
-
