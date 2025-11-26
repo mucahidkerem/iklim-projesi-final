@@ -5,4 +5,4 @@ requests-cache
 pandas
 retry-requests
 plotly
-geopy
+requests
