@@ -33,7 +33,7 @@ except:
     st.stop()
 
 genai.configure(api_key=GOOGLE_API_KEY)
-model = genai.GenerativeModel('gemini-2.0-flash')
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 # ================= SAYFA AYARLARI =================
 st.set_page_config(page_title="İklim Analiz Sistemi", layout="wide", page_icon="🌍")
